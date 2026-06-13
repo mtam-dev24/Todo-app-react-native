@@ -16,20 +16,17 @@ export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit 
 
     return (
         <View key={id} style={styles.todoitem}>
-            <Text style={[styles.namestyle, !isDone && styles.doneNameStyle]}>{name}</Text>
+            <Text style={[styles.namestyle, isDone && styles.doneNameStyle]}>{name}</Text>
             <Pressable
                 style={styles.checkbox}
-                onPress={() => {
-                    onToggle(id);
-                    isDone ? setTickDone("X") : setTickDone(" ")
-                }}>
-                <Text style={{ color: "blue", fontSize: 20, fontWeight: 700 }}>
-                    {tickDone}
+                onPress={() => onToggle(id)}>
+                <Text style={{ color: "blue", fontSize: 20, fontWeight: '700' }}>
+                    {isDone ? "X" : " "}
                 </Text>
             </Pressable>
             <Button title={"Edit"} />
             <Pressable onPress={() => onDelete(id)} style={styles.deleteStyle}>
-                <Text style={{ color: "#511b1b", fontSize: 13, fontWeight: 700, margin: 2 }}>Xóa</Text>
+                <Text style={{ color: "#511b1b", fontSize: 13, fontWeight: '700', margin: 2 }}>Xóa</Text>
             </Pressable>
         </View>
     )

@@ -11,14 +11,7 @@ export type TodoType = {
 }
 
 export default function TodoApp() {
-    const [todos, setTodos] = useState<TodoType[]>([
-        {
-            id: 'oppp',
-            name: 'qooppo',
-            isDone: false,
-            isDeleted: false,
-        }
-    ]);
+    const [todos, setTodos] = useState<TodoType[]>([]);
 
     const addTodo = (name: string) => {
         const newTodo: TodoType = {
@@ -73,7 +66,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: "center",
         fontSize: 36,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 20,
         color: "blue"
     }

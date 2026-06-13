@@ -39,7 +39,7 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
 const styles = StyleSheet.create({
     title: {
         fontSize: 19,
-        fontWeight: 500,
+        fontWeight: '500',
         textAlign: "center",
         paddingVertical: 10,
         backgroundColor: "#e1a35d",
