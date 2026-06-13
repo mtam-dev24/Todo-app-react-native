@@ -21,10 +21,12 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
             />
             <Button
                 onPress={() => {
-                    if (newTodo.trim() !== "") {
-                        onAdd(newTodo);
-                        setNewTodo("");
-                    }
+                    if (newTodo.trim() == "") {
+                        alert("Todo đang rỗng!")
+                        return;
+                    };
+                    onAdd(newTodo);
+                    setNewTodo("");
                 }
                 }
                 title={"+ Thêm todo"}

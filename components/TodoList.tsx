@@ -12,22 +12,8 @@ interface TodoListProps {
 
 export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoListProps) {
     return (
-        // <ScrollView style={styles.todolist}>
-        //     {todos.filter(todo => (!todo.isDeleted))
-        //         .map(todo => (
-        //             <TodoItem
-        //                 key={todo.id}
-        //                 id={todo.id}
-        //                 name={todo.name}
-        //                 isDone={todo.isDone}
-        //                 onToggle={onToggle}
-        //                 onDelete={onDelete}
-        //                 onEdit={onEdit}
-        //             />
-        //         ))}
-        // </ScrollView>
         <FlatList
-            data={todos}
+            data={todos.filter(todo => !todo.isDeleted)}
             renderItem={({ item }) =>
                 <TodoItem
                     key={item.id}
