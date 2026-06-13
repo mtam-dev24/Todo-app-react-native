@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         backgroundColor: "#6cb6db",
         marginBottom: 5,
+        borderRadius: 6,
     },
     namestyle: {
         flex: 1,

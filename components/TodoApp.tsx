@@ -27,7 +27,7 @@ export default function TodoApp() {
             isDone: false,
             isDeleted: false,
         }
-        setTodos([...todos, newTodo]);
+        setTodos([newTodo, ...todos]);
     };
 
     const toggleTodo = (id: string) => {
