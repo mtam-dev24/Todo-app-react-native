@@ -11,7 +11,7 @@ interface TodoListProps {
 
 export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoListProps) {
     return (
-        <ScrollView>
+        <ScrollView style={styles.todolist}>
             {todos.filter(todo => (!todo.isDeleted))
                 .map(todo => (
                     <TodoItem
@@ -27,3 +27,12 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    todolist: {
+        marginTop: 10,
+        borderWidth: 1,
+        borderColor: "blue",
+        backgroundColor: "#b4dde0"
+    }
+})

@@ -13,8 +13,8 @@ interface TodoItemProps {
 
 export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit }: TodoItemProps) {
     return (
-        <View style={styles.todoitem}>
-            <Text>{name}</Text>
+        <View key={id} style={styles.todoitem}>
+            <Text style={styles.namestyle}>{name}</Text>
             <Button title={(isDone) ? "Done" : "unDone"} onPress={() => onToggle(id)} />
             <Button title={"Edit"} />
             <Button title={"Delete"} onPress={() => onDelete(id)} />
@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
         alignContent: "center",
         flex: 1,
         flexDirection: "row",
-    }
+        backgroundColor: "#6cb6db",
+        marginBottom: 10,
+    },
+    namestyle: {
+        flex: 1,
+    },
 })
 
