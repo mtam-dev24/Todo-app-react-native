@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useState } from 'react';
 import TodoList from './TodoList';
 import TodoInput from './TodoInput'
@@ -48,6 +48,7 @@ export default function TodoApp() {
 
     return (
         <View style={styles.app}>
+            <Text style={styles.title}>TODO APP</Text>
             <TodoInput onAdd={addTodo} />
             <TodoList
                 todos={todos}
@@ -64,6 +65,16 @@ const styles = StyleSheet.create({
     app: {
         margin: 20,
         flex: 1,
-        alignContent: "center"
+        alignContent: "center",
+        backgroundColor: "#dcf4e0",
+        padding: 20,
+        borderRadius: 10,
+    },
+    title: {
+        textAlign: "center",
+        fontSize: 36,
+        fontWeight: 600,
+        marginBottom: 20,
+        color: "blue"
     }
 })

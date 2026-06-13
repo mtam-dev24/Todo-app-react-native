@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         backgroundColor: "#6cb6db",
-        marginBottom: 10,
+        marginBottom: 5,
     },
     namestyle: {
         flex: 1,

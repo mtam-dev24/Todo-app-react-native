@@ -10,12 +10,14 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
 
     return (
         <View style={{ alignContent: "center" }}>
-            <Text style={styles.title}>New Todo</Text>
+            <Text style={styles.title}>Thêm todo mới</Text>
             <TextInput
                 style={styles.textinput}
                 multiline
                 onChangeText={(value) => setNewTodo(value)}
                 value={newTodo}
+                placeholder="Nhập vào todo mới..."
+                placeholderTextColor={"#9e9696"}
             />
             <Button
                 onPress={() => {
@@ -25,7 +27,7 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
                     }
                 }
                 }
-                title={"Thêm todo"}
+                title={"+ Thêm todo"}
             />
         </View>
     )
@@ -34,9 +36,13 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
 }
 const styles = StyleSheet.create({
     title: {
-        fontSize: 20,
+        fontSize: 19,
         fontWeight: 500,
-        alignContent: "center"
+        textAlign: "center",
+        paddingVertical: 10,
+        backgroundColor: "#e1a35d",
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
     },
     textinput: {
         flex: 1,
@@ -44,5 +50,6 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 5,
         padding: 20,
+        backgroundColor: "#edd4a4",
     }
 })
