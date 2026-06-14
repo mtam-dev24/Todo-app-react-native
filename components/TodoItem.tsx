@@ -130,4 +130,3 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
 })
-
