@@ -78,7 +78,6 @@ export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit 
 const styles = StyleSheet.create({
     todoitem: {
         padding: 10,
-        flex: 1,
         flexDirection: "row",
         backgroundColor: "#6cb6db",
         marginBottom: 5,

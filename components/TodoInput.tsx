@@ -2,7 +2,7 @@ import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { useState } from 'react'
 
 interface TodoInputProps {
-    onAdd: (id: string) => void,
+    onAdd: (name: string) => void,
 }
 
 export default function TodoInput({ onAdd }: TodoInputProps) {

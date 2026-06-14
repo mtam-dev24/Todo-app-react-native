@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Pressable, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Pressable, FlatList, ScrollView } from 'react-native';
 import TodoItem from './TodoItem';
 import { TodoType } from './TodoApp';
 import { useState } from 'react';
@@ -42,7 +42,7 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
                     </Text>
                 </Pressable>
             </View>
-            <FlatList
+            {/* <FlatList
                 data={filteredList}
                 renderItem={({ item }) =>
                     <TodoItem
@@ -55,8 +55,24 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
                     />
                 }
                 keyExtractor={item => item.id}
+                scrollEnabled={true}
                 style={[styles.todolist, { flex: 1 }]}
-            />
+            /> */}
+            <ScrollView style={styles.todolist}>
+                {
+                    filteredList.map(todo =>
+                        <TodoItem
+                            key={todo.id}
+                            id={todo.id}
+                            name={todo.name}
+                            isDone={todo.isDone}
+                            onToggle={onToggle}
+                            onDelete={onDelete}
+                            onEdit={onEdit}
+                        />)
+
+                }
+            </ScrollView>
         </View>
     )
 }
