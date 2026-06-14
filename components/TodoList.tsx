@@ -24,7 +24,7 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
         })
 
     return (
-        <View>
+        <View style={{ height: "60%" }}>
             <View style={styles.todoFilter}>
                 <Pressable style={[styles.filterButton, (filterStatus === "all") && styles.isActiveFilter]} onPress={() => setFilterStatus("all")}>
                     <Text>
@@ -68,9 +68,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth: 1,
         borderColor: "blue",
-        borderBottomRightRadius: 10,
-        borderBottomLeftRadius: 10,
-        backgroundColor: "#b4dde0"
+        backgroundColor: "#b4dde0",
     },
     todoFilter: {
         flexDirection: "row",

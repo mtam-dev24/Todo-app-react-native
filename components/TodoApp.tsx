@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { useState } from 'react';
 import TodoList from './TodoList';
 import TodoInput from './TodoInput'
@@ -39,6 +39,15 @@ export default function TodoApp() {
         setTodos(todos.map(todo => (todo.id === id ? { ...todo, name: newName } : todo)));
     };
 
+    const deleteDoneTodo = () => {
+        const newTodoDeleted: TodoType[] = todos.filter(todo => !todo.isDone);
+        setTodos(newTodoDeleted);
+    }
+
+    const deleteAllTodo = () => {
+        setTodos([]);
+    }
+
     return (
         <View style={styles.app}>
             <Text style={styles.title}>TODO APP</Text>
@@ -49,6 +58,22 @@ export default function TodoApp() {
                 onDelete={deleteTodo}
                 onEdit={editTodo}
             />
+            <View style={styles.deleteView}>
+                <Pressable
+                    style={[styles.deleteButton, { borderBottomLeftRadius: 10 }]}
+                    onPress={() => deleteAllTodo()}>
+                    <Text style={{ padding: 5 }}>
+                        Delete All Todo
+                    </Text>
+                </Pressable>
+                <Pressable
+                    style={[styles.deleteButton, { borderBottomRightRadius: 10 }]}
+                    onPress={() => deleteDoneTodo()}>
+                    <Text style={{ padding: 5 }}>
+                        Delete Done Todo
+                    </Text>
+                </Pressable>
+            </View>
         </View>
     )
 }
@@ -69,5 +94,17 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         marginBottom: 20,
         color: "blue"
+    },
+    deleteView: {
+        flexDirection: "row",
+        justifyContent: "center",
+    },
+    deleteButton: {
+        backgroundColor: "red",
+        //borderBottomRightRadius: 10,
+        //borderBottomLeftRadius: 10,
+        flex: 1,
+        alignItems: "center",
+        borderWidth: 1,
     }
 })
