@@ -28,7 +28,7 @@ export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit 
                     </Pressable>
                     {/* <Button title={"Edit"} onPress={() => setIsEditing(true)} /> */}
                     <Pressable onPress={() => setIsEditing(true)} style={styles.editButton}>
-                        <Text style={{ fontWeight: 700, padding: 4 }}>
+                        <Text style={{ fontWeight: 700, padding: 5, color: "#50371c" }}>
                             Edit
                         </Text>
                     </Pressable>
@@ -42,7 +42,9 @@ export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit 
                         onChangeText={(value) => setEditValue(value)}
                         value={editValue}
                         style={styles.editInput}
-                        placeholder={editValue} />
+                        placeholder={editValue}
+                        multiline
+                    />
                     <Button
                         title={"Xong"}
                         onPress={() => {
@@ -61,13 +63,12 @@ export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit 
 const styles = StyleSheet.create({
     todoitem: {
         padding: 10,
-        alignContent: "center",
         flex: 1,
         flexDirection: "row",
         backgroundColor: "#6cb6db",
         marginBottom: 5,
         borderRadius: 6,
-        alignItems: "center"
+        alignItems: "center",
     },
     namestyle: {
         flex: 1,
@@ -88,7 +89,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     editButton: {
-        //borderWidth: 1,
         backgroundColor: "#e4c334",
         alignItems: "center",
         borderRadius: 5,

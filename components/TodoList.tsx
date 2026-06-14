@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Pressable, FlatList } from 'react-native';
 import TodoItem from './TodoItem';
 import { TodoType } from './TodoApp';
 
