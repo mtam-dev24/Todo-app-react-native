@@ -24,7 +24,7 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
         })
 
     return (
-        <View style={{ height: "60%" }}>
+        <View style={{ flex: 1, maxHeight: "60%" }}>
             <View style={styles.todoFilter}>
                 <Pressable style={[styles.filterButton, (filterStatus === "all") && styles.isActiveFilter]} onPress={() => setFilterStatus("all")}>
                     <Text>
@@ -46,7 +46,6 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
                 data={filteredList}
                 renderItem={({ item }) =>
                     <TodoItem
-                        key={item.id}
                         id={item.id}
                         name={item.name}
                         isDone={item.isDone}
@@ -78,6 +77,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderTopRightRadius: 10,
         borderTopLeftRadius: 10,
+        height: '15%',
     },
     filterButton: {
         //padding: 5,
@@ -89,8 +89,9 @@ const styles = StyleSheet.create({
         //borderColor: "blue",
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
-        width: 90,
-        height: 30,
+        flex: 1,
+        maxWidth: '29%',
+        maxHeight: '90%',
         alignItems: "center",
         justifyContent: "center",
     },
