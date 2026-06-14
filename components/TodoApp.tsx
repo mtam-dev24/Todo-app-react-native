@@ -15,7 +15,7 @@ export default function TodoApp() {
 
     const addTodo = (name: string) => {
         const newTodo: TodoType = {
-            id: `${Date.now}-${Math.random()}`,
+            id: `${Date.now()}-${Math.random()}`,
             name: name,
             isDone: false,
             isDeleted: false,
@@ -108,9 +108,10 @@ export default function TodoApp() {
 
 const styles = StyleSheet.create({
     app: {
-        marginVertical: 20,
+        marginTop: 40,
+        marginBottom: 40,
+        marginHorizontal: 5,
         flex: 1,
-        alignContent: "center",
         backgroundColor: "#dcf4e0",
         padding: 20,
         borderRadius: 10,
@@ -125,6 +126,8 @@ const styles = StyleSheet.create({
     deleteView: {
         flexDirection: "row",
         justifyContent: "center",
+        height: 30,
+        marginTop: 10,
     },
     deleteButton: {
         backgroundColor: "#fff12f",
