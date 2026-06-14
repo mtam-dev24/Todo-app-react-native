@@ -42,7 +42,7 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
                     </Text>
                 </Pressable>
             </View>
-            {/* <FlatList
+            <FlatList
                 data={filteredList}
                 renderItem={({ item }) =>
                     <TodoItem
@@ -57,8 +57,8 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
                 keyExtractor={item => item.id}
                 scrollEnabled={true}
                 style={[styles.todolist, { flex: 1 }]}
-            /> */}
-            <ScrollView style={styles.todolist}>
+            />
+            {/* <ScrollView style={styles.todolist}>
                 {
                     filteredList.map(todo =>
                         <TodoItem
@@ -70,9 +70,8 @@ export default function TodoList({ todos, onToggle, onDelete, onEdit }: TodoList
                             onDelete={onDelete}
                             onEdit={onEdit}
                         />)
-
                 }
-            </ScrollView>
+            </ScrollView> */}
         </View>
     )
 }
