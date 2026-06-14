@@ -12,22 +12,48 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit }: TodoItemProps) {
-    const [tickDone, setTickDone] = useState(" ")
-
+    const [isEditing, setIsEditing] = useState(false);
+    const [editValue, setEditValue] = useState(name);
     return (
-        <View key={id} style={styles.todoitem}>
-            <Text style={[styles.namestyle, isDone && styles.doneNameStyle]}>{name}</Text>
-            <Pressable
-                style={styles.checkbox}
-                onPress={() => onToggle(id)}>
-                <Text style={{ color: "blue", fontSize: 20, fontWeight: '700' }}>
-                    {isDone ? "X" : " "}
-                </Text>
-            </Pressable>
-            <Button title={"Edit"} />
-            <Pressable onPress={() => onDelete(id)} style={styles.deleteStyle}>
-                <Text style={{ color: "#511b1b", fontSize: 13, fontWeight: '700', margin: 2 }}>Xóa</Text>
-            </Pressable>
+        <View>
+            {!isEditing ?
+                <View key={id} style={styles.todoitem}>
+                    <Text style={[styles.namestyle, isDone && styles.doneNameStyle]}>{name}</Text>
+                    <Pressable
+                        style={styles.checkbox}
+                        onPress={() => onToggle(id)}>
+                        <Text style={{ color: "blue", fontSize: 20, fontWeight: '700' }}>
+                            {isDone ? "X" : " "}
+                        </Text>
+                    </Pressable>
+                    {/* <Button title={"Edit"} onPress={() => setIsEditing(true)} /> */}
+                    <Pressable onPress={() => setIsEditing(true)} style={styles.editButton}>
+                        <Text style={{ fontWeight: 700, padding: 4 }}>
+                            Edit
+                        </Text>
+                    </Pressable>
+                    <Pressable onPress={() => onDelete(id)} style={styles.deleteStyle}>
+                        <Text style={{ color: "#511b1b", fontSize: 13, fontWeight: '700', margin: 2 }}>Xóa</Text>
+                    </Pressable>
+                </View>
+                :
+                <View key={id} style={styles.todoitem}>
+                    <TextInput
+                        onChangeText={(value) => setEditValue(value)}
+                        value={editValue}
+                        style={styles.editInput}
+                        placeholder={editValue} />
+                    <Button
+                        title={"Xong"}
+                        onPress={() => {
+                            if (!editValue) return;
+                            onEdit(id, editValue);
+                            setEditValue(editValue);
+                            setIsEditing(false);
+                        }}
+                    />
+                </View>
+            }
         </View>
     )
 }
@@ -61,8 +87,21 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginHorizontal: 5,
     },
-    edit: {
-
+    editButton: {
+        //borderWidth: 1,
+        backgroundColor: "#e4c334",
+        alignItems: "center",
+        borderRadius: 5,
+        height: 30,
+        width: 30,
+    },
+    editInput: {
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: "#9bd7fd",
+        flex: 1,
+        padding: 7,
+        marginRight: 4,
     },
     deleteStyle: {
         width: 30,
