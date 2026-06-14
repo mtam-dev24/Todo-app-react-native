@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import { useState } from 'react'
 
 interface TodoInputProps {
@@ -22,7 +22,7 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
             <Button
                 onPress={() => {
                     if (newTodo.trim() == "") {
-                        alert("Todo đang rỗng!")
+                        Alert.alert("Lỗi nhập vào todo mới", "Todo mới đang rỗng, hãy nhập vào giá trị!")
                         return;
                     };
                     onAdd(newTodo);
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
     },
     textinput: {
-        height: 60,
+        height: 90,
         borderColor: "black",
         borderWidth: 2,
         borderRadius: 0,

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Alert } from 'react-native';
 import { useState } from 'react';
 import TodoList from './TodoList';
 import TodoInput from './TodoInput'
@@ -61,16 +61,43 @@ export default function TodoApp() {
             <View style={styles.deleteView}>
                 <Pressable
                     style={[styles.deleteButton, { borderBottomLeftRadius: 10 }]}
-                    onPress={() => deleteAllTodo()}>
-                    <Text style={{ padding: 5 }}>
-                        Delete All Todo
+                    onPress={() => {
+                        Alert.alert(
+                            "Xóa tất cả các to do?", "Xóa tất cả dù đã hoàn thành hay chưa",
+                            [
+                                {
+                                    text: "Hủy"
+                                },
+                                {
+                                    text: "Xác nhận",
+                                    onPress: () => deleteAllTodo()
+                                }
+                            ]
+                        );
+                    }}>
+                    <Text style={{ padding: 5, color: "#ff0000", fontWeight: 500 }}>
+                        Xóa tất cả todo
                     </Text>
                 </Pressable>
                 <Pressable
                     style={[styles.deleteButton, { borderBottomRightRadius: 10 }]}
-                    onPress={() => deleteDoneTodo()}>
-                    <Text style={{ padding: 5 }}>
-                        Delete Done Todo
+                    onPress={() => {
+                        Alert.alert(
+                            "Xóa tất cả todo đã hoàn thành?", "Chỉ xóa todo đã hoàn thành",
+                            [
+                                {
+                                    text: "Hủy"
+                                },
+                                {
+                                    text: "Xác nhận",
+                                    onPress: () => deleteDoneTodo()
+                                }
+                            ]
+                        );
+
+                    }}>
+                    <Text style={{ padding: 5, color: "#3d25f5", fontWeight: 500 }}>
+                        Xóa todo đã xong
                     </Text>
                 </Pressable>
             </View>
@@ -81,7 +108,7 @@ export default function TodoApp() {
 
 const styles = StyleSheet.create({
     app: {
-        margin: 20,
+        marginVertical: 20,
         flex: 1,
         alignContent: "center",
         backgroundColor: "#dcf4e0",
@@ -100,7 +127,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     deleteButton: {
-        backgroundColor: "red",
+        backgroundColor: "#fff12f",
         //borderBottomRightRadius: 10,
         //borderBottomLeftRadius: 10,
         flex: 1,

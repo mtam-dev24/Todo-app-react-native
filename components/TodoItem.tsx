@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Button, TextInput, Pressable, Alert } from 'react-native';
 import { useState } from 'react';
 //import { TodoType } from './TodoApp';
 
@@ -28,12 +28,27 @@ export default function TodoItem({ id, name, isDone, onToggle, onDelete, onEdit 
                     </Pressable>
                     {/* <Button title={"Edit"} onPress={() => setIsEditing(true)} /> */}
                     <Pressable onPress={() => setIsEditing(true)} style={styles.editButton}>
-                        <Text style={{ fontWeight: 700, padding: 5, color: "#50371c" }}>
-                            Edit
+                        <Text style={{ fontWeight: '700', color: "#50371c" }}>
+                            Sửa
                         </Text>
                     </Pressable>
-                    <Pressable onPress={() => onDelete(id)} style={styles.deleteStyle}>
-                        <Text style={{ color: "#511b1b", fontSize: 13, fontWeight: '700', margin: 2 }}>Xóa</Text>
+                    <Pressable
+                        onPress={() => {
+                            Alert.alert(
+                                "Xác nhận xóa",
+                                "",
+                                [
+                                    {
+                                        text: "Xác nhận",
+                                        onPress: () => onDelete(id),
+                                    }
+                                ]
+                            )
+                        }}
+                        style={styles.deleteStyle}>
+                        <Text style={{ color: "#511b1b", fontWeight: '700' }}>
+                            Xóa
+                        </Text>
                     </Pressable>
                 </View>
                 :
@@ -94,6 +109,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         height: 30,
         width: 30,
+        justifyContent: "center"
     },
     editInput: {
         borderWidth: 1,
@@ -109,6 +125,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "red",
         alignItems: "center",
+        justifyContent: "center",
         backgroundColor: "#fe0808",
         borderRadius: 5,
         marginHorizontal: 5,

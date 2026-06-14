@@ -1,7 +1,11 @@
 import TodoApp from './components/TodoApp'
-import { View } from 'react-native'
+import { TouchableWithoutFeedback, View, Keyboard } from 'react-native'
 export default function App() {
   return (
-    <TodoApp />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={{ borderColor: "red" }}>
+      <View style={{ flex: 1 }}>
+        <TodoApp />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
