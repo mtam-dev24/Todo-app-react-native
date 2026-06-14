@@ -15,7 +15,7 @@ export default function TodoApp() {
 
     const addTodo = (name: string) => {
         const newTodo: TodoType = {
-            id: crypto.randomUUID(),
+            id: `${Date.now}-${Math.random()}`,
             name: name,
             isDone: false,
             isDeleted: false,

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
     },
     textinput: {
-        flex: 1,
+        height: 60,
         borderColor: "black",
         borderWidth: 2,
         borderRadius: 0,
